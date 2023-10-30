@@ -86,7 +86,7 @@ function removeFruit(e) {
     console.log("please" + JSON.stringify(fruitCal[fruitName]))
     fruitNutrition.textContent = calories
 
-    delete fruitCal[fruitName]
+    delete fruitCal[fruitName] //deleting the key value pair (fruitName) is the key https://www.youtube.com/watch?v=TCXQsQL5kPo
 
     e.target.remove();
 
