@@ -3,10 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=sect, initial-scale=1.0">
-    <title>Document</title>
+    <title>Fruit Salad</title>
+    <script defer src="./bundle.js"></script> 
+    <!-- If the defer attribute is set, it specifies that the script is downloaded in parallel to parsing the page, and executed after the page has finished parsing. -->
+
+
 </head>
 <body>
-    <section id="inputSection"></section>
+    <section id="inputSection">
+        <form>
+            <label for="fruitInput">Enter Fruit Name</label><br>
+            <input type="text" name="fruit" id="fruitInput" placeholder="e.g. banana" />
+            <input type="submit" value="Submit" />
+        </form>
+    </section>
+
     <section id="fruitSection"></section>
     <section id="nutritionSection"></section>
 </body>
