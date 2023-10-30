@@ -2,6 +2,9 @@ require("./script2")
 
 console.log("Hello from scriptjs")
 
+let fruitArray = ["Apple", "Mango", "Kiwi", "Banana", "Grape", "Pear"];
+
+
 const fruitForm = document.querySelector("#inputSection form")
 fruitForm.addEventListener("submit", extractFruit)
 
@@ -15,13 +18,23 @@ function extractFruit(e) {
 
 const fruitList = document.querySelector("#fruitSection ul")
 function addFruit(fruit) {
+    // console.log(fruitArray.includes(fruit));
     if (fruit === "") {
         console.log("Invalid Fruit")
-    } else {
+    } else if (fruitArray.includes(fruit)) {
         const li = document.createElement("li")
+
+        li.addEventListener("click", removeFruit, { once: true })
+
         li.textContent = fruit
         fruitList.appendChild(li)
+    } else {
+        alert("Not a valid fruit!")
     }
+}
+
+function removeFruit(e) {
+    e.target.remove();
 }
 
 
