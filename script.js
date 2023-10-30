@@ -22,17 +22,31 @@ function extractFruit(e) {
     console.log(e.target[0].value = "") //clearing the form
 }
 
-function fetchFruitData(fruit) {
-    fetch(`https://fruity-api.onrender.com/fruits/${fruit}`)
-        .then(resp => {
-            if (resp.ok) {
-                return resp.json() //json to javascript object
-            } else {
-                throw Error("Error occured with http code: " + resp.status)
-            }
-        })
-        .then(data => addFruit(data))
-        .catch(err => console.log(err))
+async function fetchFruitData(fruit) {
+    // fetch(`https://fruity-api.onrender.com/fruits/${fruit}`)
+    //     .then(resp => {
+    //         if (resp.ok) {
+    //             return resp.json() //json to javascript object
+    //         } else {
+    //             throw Error("Error occured with http code: " + resp.status)
+    //         }
+    //     })
+    //     .then(data => addFruit(data))
+    //     .catch(err => console.log(err))
+
+    try {
+        const response = await fetch(`https://fruity-api.onrender.com/fruits/${fruit}`)
+        const fruitResponse = await fetch(`https://pixabay.com/api/?q=${fruit}+fruit&key=40368249-0422ead8f6a73229135980b4d`)
+        if (response.ok) {
+            let data = await response.json();
+            addFruit(data)
+        } else {
+            throw Error("Error occured with http code: " + resp.status)
+        }
+    } catch (err) {
+        console.log(e)
+    }
+
 }
 
 const fruitList = document.querySelector("#fruitSection ul")
